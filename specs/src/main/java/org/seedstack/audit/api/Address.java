@@ -14,8 +14,8 @@ import java.net.UnknownHostException;
 
 /**
  * An internet address : an ip and/or a DNS name
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public class Address {
 
@@ -25,7 +25,7 @@ public class Address {
 
     /**
      * Contructor with a hostname
-     * 
+     *
      * @param hostName the hostname
      * @throws UnknownHostException if the host is unknown
      */
@@ -35,7 +35,7 @@ public class Address {
 
     /**
      * Constructor with an INETAddress
-     * 
+     *
      * @param address th address
      */
     public Address(InetAddress address) {

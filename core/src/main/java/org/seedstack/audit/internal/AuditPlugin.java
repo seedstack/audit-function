@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * Plugin for audit
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditPlugin extends AbstractPlugin {
 

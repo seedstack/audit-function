@@ -13,51 +13,50 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.seedstack.functions.audit</groupId>
-        <artifactId>audit-function</artifactId>
-        <version>2.0.1-SNAPSHOT</version>
+        <groupId>org.seedstack.addons</groupId>
+        <artifactId>audit</artifactId>
+        <version>2.1.0-M1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>audit-function-core</artifactId>
-    
+    <artifactId>audit-core</artifactId>
+
+    <properties>
+        <compatibility.artifactId>audit-function-core</compatibility.artifactId>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>org.seedstack.functions.audit</groupId>
-            <artifactId>audit-function-specs</artifactId>
+            <groupId>org.seedstack.addons</groupId>
+            <artifactId>audit-specs</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-security-support-core</artifactId>
+            <artifactId>seed-security-core</artifactId>
+            <version>${seed.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-el-support</artifactId>
+            <artifactId>seed-el</artifactId>
+            <version>${seed.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
+            <version>${javax-el.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-unittest-support</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-integrationtest-support-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-security-support-test</artifactId>
+            <artifactId>seed-testing</artifactId>
+            <version>${seed.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

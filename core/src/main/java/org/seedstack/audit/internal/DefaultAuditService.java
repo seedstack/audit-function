@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Default implementation of AuditService.
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class DefaultAuditService implements AuditService {
 

@@ -24,7 +24,7 @@ import ch.qos.logback.core.LayoutBase;
 /**
  * LogbackLayout for trace of audit trails.
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditLogbackLayout extends LayoutBase<ILoggingEvent> {
 

@@ -11,8 +11,8 @@ package org.seedstack.audit.api;
 
 /**
  * A Trail regroups several events for one user action.
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public class Trail {
 
@@ -24,10 +24,10 @@ public class Trail {
 
     /**
      * Constructor
-     * 
-     * @param id id of the trail
+     *
+     * @param id        id of the trail
      * @param initiator initiator of the trail
-     * @param host Host on which the trail is created
+     * @param host      Host on which the trail is created
      */
     public Trail(long id, Initiator initiator, Host host) {
         this.id = id;

@@ -11,15 +11,15 @@ package org.seedstack.audit.api;
 
 /**
  * Allows to describe an event in case of a certain exception.
- * 
+ *
  * @param <E> exception handled by the handler
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public interface TrailExceptionHandler<E extends Exception> {
 
     /**
      * Creates a message for an exception.
-     * 
+     *
      * @param e the exception to describe
      * @return the description
      */

@@ -9,19 +9,20 @@
  */
 package org.seedstack.audit.api;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * Represents the machine and application
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public class Host {
 
+    // FIXME remove logging code from specs
     private static final Logger LOG = LoggerFactory.getLogger(Host.class);
 
     private final String name;
@@ -32,9 +33,9 @@ public class Host {
 
     /**
      * Constructor where hostname is given. If hostname is unknown, address will be null.
-     * 
-     * @param id functional id of the host
-     * @param name functional name of the host
+     *
+     * @param id       functional id of the host
+     * @param name     functional name of the host
      * @param hostName hostname
      */
     public Host(String id, String name, String hostName) {
@@ -53,8 +54,8 @@ public class Host {
 
     /**
      * Constructor without hostname. Hostname will be resolved with localhost
-     * 
-     * @param id functional id of the host
+     *
+     * @param id   functional id of the host
      * @param name functional name of the host
      */
     public Host(String id, String name) {
@@ -77,7 +78,7 @@ public class Host {
 
     /**
      * Gets the address.
-     * 
+     *
      * @return the Address. Null if unknown.
      */
     public Address getAddress() {

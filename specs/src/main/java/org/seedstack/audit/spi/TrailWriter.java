@@ -14,7 +14,7 @@ import org.seedstack.audit.api.AuditEvent;
 /**
  * Interface used to write an event in its final form (log, bdd...)
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public interface TrailWriter {
 

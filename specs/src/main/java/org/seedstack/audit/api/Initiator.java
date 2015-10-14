@@ -9,18 +9,19 @@
  */
 package org.seedstack.audit.api;
 
-import java.net.UnknownHostException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.UnknownHostException;
+
 /**
  * The initiator of an event
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public class Initiator {
 
+    // FIXME remove logging code from specs
     private static final Logger LOG = LoggerFactory.getLogger(Initiator.class);
 
     private final String id;
@@ -31,9 +32,9 @@ public class Initiator {
 
     /**
      * Constructor.
-     * 
-     * @param id id of initiator
-     * @param name the name
+     *
+     * @param id        id of initiator
+     * @param name      the name
      * @param ipAddress the ip address
      */
     public Initiator(String id, String name, String ipAddress) {

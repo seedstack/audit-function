@@ -12,23 +12,23 @@ package org.seedstack.audit.api;
 
 /**
  * Service to trail events for auditing purpose.
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public interface AuditService {
 
     /**
      * Creates a new trail initialized with initiator and Host
-     * 
+     *
      * @return a brand new trail
      */
     Trail createTrail();
 
     /**
      * Writes an event.
-     * 
+     *
      * @param message the message to trail
-     * @param trail the trail to use
+     * @param trail   the trail to use
      */
     void trail(String message, Trail trail);
 }

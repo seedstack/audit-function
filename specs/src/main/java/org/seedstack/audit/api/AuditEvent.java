@@ -14,8 +14,8 @@ import java.util.Date;
 
 /**
  * An event to trail
- * 
- * @author U236838
+ *
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditEvent {
 
@@ -27,9 +27,9 @@ public class AuditEvent {
 
     /**
      * Constructor
-     * 
+     *
      * @param message the message of the event
-     * @param trail the trail it belongs to
+     * @param trail   the trail it belongs to
      */
     public AuditEvent(String message, Trail trail) {
         this.message = message;
@@ -51,7 +51,7 @@ public class AuditEvent {
 
     /**
      * Formats the date of the event with the given format
-     * 
+     *
      * @param format the format
      * @return the formatted date
      */

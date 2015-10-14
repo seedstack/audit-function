@@ -17,7 +17,7 @@ import org.seedstack.audit.api.Trail;
 /**
  * Local thread context for audit interceptor
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 class AuditContext {
 

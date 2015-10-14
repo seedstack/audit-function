@@ -27,7 +27,7 @@ import java.util.Set;
 /**
  * Module for the audit
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditModule extends AbstractModule {
 

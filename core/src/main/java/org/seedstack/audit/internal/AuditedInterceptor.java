@@ -14,10 +14,10 @@ import java.util.Set;
 import javax.el.ELContext;
 import javax.inject.Inject;
 
+import net.jodah.typetools.TypeResolver;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang.StringUtils;
-import org.jodah.typetools.TypeResolver;
 import org.seedstack.audit.api.AuditService;
 import org.seedstack.audit.api.Trail;
 import org.seedstack.audit.api.TrailExceptionHandler;
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 /**
  * This interceptor intercepts methods annotated with Audited annotation.
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditedInterceptor implements MethodInterceptor {
 

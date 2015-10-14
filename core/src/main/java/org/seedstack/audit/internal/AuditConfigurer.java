@@ -21,7 +21,7 @@ import java.util.*;
 /**
  * Reads the configuration to deduce the classes to use
  * 
- * @author U236838
+ * @author yves.dautremay@mpsa.com
  */
 public class AuditConfigurer {
 
