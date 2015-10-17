@@ -34,7 +34,6 @@
         <module>specs</module>
         <module>core</module>
         <module>logback</module>
-        <module>bom</module>
     </modules>
 
     <build>
