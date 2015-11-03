@@ -7,7 +7,7 @@
  */
 package org.seedstack.audit.spi;
 
-import org.seedstack.audit.api.AuditEvent;
+import org.seedstack.audit.AuditEvent;
 
 /**
  * Interface used to write an event in its final form (log, bdd...)

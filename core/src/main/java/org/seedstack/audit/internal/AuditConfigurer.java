@@ -9,12 +9,16 @@ package org.seedstack.audit.internal;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang.ArrayUtils;
-import org.seedstack.audit.api.TrailExceptionHandler;
+import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Reads the configuration to deduce the classes to use
