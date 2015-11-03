@@ -6,8 +6,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 /**
- * Provides classes for auditing the functional behavior of an application.
+ * Provides classes for auditing applications functional behavior.
  *
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;

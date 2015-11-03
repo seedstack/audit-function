@@ -10,10 +10,10 @@
  */
 package org.seedstack.audit.internal;
 
-import org.seedstack.audit.api.AuditEvent;
+import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.spi.TrailWriter;
-import org.seedstack.seed.el.api.ELContextBuilder;
-import org.seedstack.seed.el.api.ELService;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELService;
 
 import javax.el.ELContext;
 import javax.inject.Inject;

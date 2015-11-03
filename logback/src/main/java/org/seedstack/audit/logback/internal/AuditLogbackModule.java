@@ -5,9 +5,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.seedstack.audit.internal.logback;
+package org.seedstack.audit.logback.internal;
 
-import org.seedstack.audit.infrastructure.logback.AuditLogbackLayout;
+import org.seedstack.audit.logback.AuditLogbackLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -5,15 +5,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.seedstack.audit.infrastructure.logback;
+package org.seedstack.audit.logback;
 
 import javax.el.ELContext;
 import javax.inject.Inject;
 
-import org.seedstack.audit.api.AuditEvent;
-import org.seedstack.seed.core.api.Configuration;
-import org.seedstack.seed.el.api.ELContextBuilder;
-import org.seedstack.seed.el.api.ELService;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.seed.Configuration;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELService;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.CoreConstants;

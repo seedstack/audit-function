@@ -7,12 +7,12 @@
  */
 package org.seedstack.audit.internal;
 
-import org.seedstack.audit.api.*;
+import org.seedstack.audit.*;
 import org.seedstack.audit.spi.TrailWriter;
-import org.seedstack.seed.core.api.Application;
-import org.seedstack.seed.security.api.SecuritySupport;
-import org.seedstack.seed.security.api.principals.Principals;
-import org.seedstack.seed.security.api.principals.SimplePrincipalProvider;
+import org.seedstack.seed.Application;
+import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.security.principals.Principals;
+import org.seedstack.seed.security.principals.SimplePrincipalProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

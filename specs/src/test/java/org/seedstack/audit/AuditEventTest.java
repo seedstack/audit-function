@@ -8,26 +8,23 @@
 /*
  * Creation : 23 juil. 2014
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import org.seedstack.audit.api.AuditEvent;
-import org.seedstack.audit.api.Trail;
+import org.mockito.Mockito;
 
 public class AuditEventTest {
 
     @Test
     public void testAuditEvent() {
         final String message = "message";
-        Trail trail = mock(Trail.class);
+        Trail trail = Mockito.mock(Trail.class);
         AuditEvent underTest = new AuditEvent(message, trail);
-        assertThat(underTest.getMessage()).isEqualTo(message);
-        assertThat(underTest.getTrail()).isEqualTo(trail);
+        Assertions.assertThat(underTest.getMessage()).isEqualTo(message);
+        Assertions.assertThat(underTest.getTrail()).isEqualTo(trail);
 
-        assertThat(underTest.getDate()).isNotNull();
-        assertThat(underTest.getFormattedDate("y")).isNotNull();
+        Assertions.assertThat(underTest.getDate()).isNotNull();
+        Assertions.assertThat(underTest.getFormattedDate("y")).isNotNull();
     }
 }

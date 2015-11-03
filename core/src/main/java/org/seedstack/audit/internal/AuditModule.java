@@ -15,9 +15,9 @@ import com.google.inject.multibindings.Multibinder;
 import com.google.inject.spi.InjectionListener;
 import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
-import org.seedstack.audit.api.AuditService;
-import org.seedstack.audit.api.Audited;
-import org.seedstack.audit.api.TrailExceptionHandler;
+import org.seedstack.audit.AuditService;
+import org.seedstack.audit.Audited;
+import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
 
 import java.util.Set;

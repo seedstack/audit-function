@@ -10,7 +10,7 @@ package org.seedstack.audit.internal;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.seedstack.audit.api.Trail;
+import org.seedstack.audit.Trail;
 
 /**
  * Local thread context for audit interceptor

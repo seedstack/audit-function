@@ -8,12 +8,10 @@
 /*
  * Creation : 23 juil. 2014
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import org.seedstack.audit.api.Initiator;
 
 public class InitiatorTest {
 
@@ -23,9 +21,9 @@ public class InitiatorTest {
         final String name = "name";
         String ipAddress = "127.0.0.1";
         Initiator initiator = new Initiator(id, name, ipAddress);
-        assertThat(initiator.getId()).isEqualTo(id);
-        assertThat(initiator.getName()).isEqualTo(name);
-        assertThat(initiator.getAddress()).isNotNull();
+        Assertions.assertThat(initiator.getId()).isEqualTo(id);
+        Assertions.assertThat(initiator.getName()).isEqualTo(name);
+        Assertions.assertThat(initiator.getAddress()).isNotNull();
     }
 
     @Test
@@ -34,8 +32,8 @@ public class InitiatorTest {
         final String name = "name";
         String ipAddress = "dummy";
         Initiator initiator = new Initiator(id, name, ipAddress);
-        assertThat(initiator.getId()).isEqualTo(id);
-        assertThat(initiator.getName()).isEqualTo(name);
-        assertThat(initiator.getAddress()).isNull();
+        Assertions.assertThat(initiator.getId()).isEqualTo(id);
+        Assertions.assertThat(initiator.getName()).isEqualTo(name);
+        Assertions.assertThat(initiator.getAddress()).isNull();
     }
 }

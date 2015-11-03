@@ -9,7 +9,7 @@ package org.seedstack.audit.internal;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang.ArrayUtils;
-import org.seedstack.audit.api.TrailExceptionHandler;
+import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
