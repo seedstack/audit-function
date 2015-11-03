@@ -15,7 +15,6 @@ import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
 import org.seedstack.audit.Trail;
-import org.seedstack.audit.internal.AuditContext;
 
 public class AuditContextTest {
 

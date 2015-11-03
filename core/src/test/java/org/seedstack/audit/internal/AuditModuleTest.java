@@ -22,9 +22,6 @@ import org.junit.Test;
 import org.mockito.internal.util.reflection.Whitebox;
 import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.TrailExceptionHandler;
-import org.seedstack.audit.internal.AuditConfigurer;
-import org.seedstack.audit.internal.AuditModule;
-import org.seedstack.audit.internal.SecurityTrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
 
 import com.google.inject.Binder;

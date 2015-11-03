@@ -25,7 +25,6 @@ import org.mockito.internal.util.reflection.Whitebox;
 import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.Host;
 import org.seedstack.audit.Trail;
-import org.seedstack.audit.internal.DefaultAuditService;
 import org.seedstack.audit.spi.TrailWriter;
 import org.seedstack.seed.Application;
 import org.seedstack.seed.security.SecuritySupport;

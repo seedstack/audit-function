@@ -8,13 +8,13 @@
 /*
  * Creation : 23 juil. 2014
  */
-package org.seedstack.audit.infrastructure.logback;
+package org.seedstack.audit.logback;
 
 import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
 import org.seedstack.audit.AuditEvent;
-import org.seedstack.audit.infrastructure.logback.LogbackTrailWriter;
+import org.seedstack.audit.logback.LogbackTrailWriter;
 
 public class LogbackTrailWriterTest {
 

@@ -10,12 +10,11 @@
  */
 package org.seedstack.audit;
 
-import static org.assertj.core.api.Assertions.assertThat;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
 import java.net.UnknownHostException;
-
-import org.junit.Test;
-import org.seedstack.audit.Address;
 
 public class AddressTest {
 
@@ -27,7 +26,7 @@ public class AddressTest {
     @Test
     public void testAddress_localhost() throws UnknownHostException {
         Address address = new Address("localhost");
-        assertThat(address.getIpAddress()).isEqualTo("127.0.0.1");
-        assertThat(address.getDnsName()).isEqualTo("localhost");
+        Assertions.assertThat(address.getIpAddress()).isEqualTo("127.0.0.1");
+        Assertions.assertThat(address.getDnsName()).isEqualTo("localhost");
     }
 }

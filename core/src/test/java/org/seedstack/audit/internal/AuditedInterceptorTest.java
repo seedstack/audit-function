@@ -26,7 +26,6 @@ import org.mockito.internal.util.reflection.Whitebox;
 import org.seedstack.audit.AuditService;
 import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.Audited;
-import org.seedstack.audit.internal.AuditedInterceptor;
 import org.seedstack.seed.el.ELContextBuilder;
 import org.seedstack.seed.el.ELContextBuilder.ELPropertyProvider;
 import org.seedstack.seed.el.ELService;

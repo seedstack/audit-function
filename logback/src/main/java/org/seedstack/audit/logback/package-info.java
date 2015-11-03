@@ -5,9 +5,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
 /**
- * Provides a Logback implementation of the audit feature.
+ * Provides a audit implementation with logback.
  *
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
  */
-package org.seedstack.audit.infrastructure.logback;
+package org.seedstack.audit.logback;
