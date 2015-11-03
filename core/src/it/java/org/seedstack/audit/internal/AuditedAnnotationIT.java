@@ -12,11 +12,11 @@ package org.seedstack.audit.internal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seedstack.audit.api.Audited;
+import org.seedstack.audit.Audited;
 import org.seedstack.seed.it.SeedITRunner;
-import org.seedstack.seed.it.api.ITBind;
-import org.seedstack.seed.security.api.WithUser;
-import org.seedstack.seed.security.api.exceptions.AuthorizationException;
+import org.seedstack.seed.it.ITBind;
+import org.seedstack.seed.security.WithUser;
+import org.seedstack.seed.security.AuthorizationException;
 
 import javax.inject.Inject;
 

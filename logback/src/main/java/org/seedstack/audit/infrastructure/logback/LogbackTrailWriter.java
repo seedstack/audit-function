@@ -7,7 +7,7 @@
  */
 package org.seedstack.audit.infrastructure.logback;
 
-import org.seedstack.audit.api.AuditEvent;
+import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.spi.TrailWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

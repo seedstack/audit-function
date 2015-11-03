@@ -8,14 +8,14 @@
 /*
  * Creation : 22 juil. 2014
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.UnknownHostException;
 
 import org.junit.Test;
-import org.seedstack.audit.api.Address;
+import org.seedstack.audit.Address;
 
 public class AddressTest {
 

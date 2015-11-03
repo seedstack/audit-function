@@ -8,15 +8,15 @@
 /*
  * Creation : 23 juil. 2014
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
-import org.seedstack.audit.api.Host;
-import org.seedstack.audit.api.Initiator;
-import org.seedstack.audit.api.Trail;
+import org.seedstack.audit.Host;
+import org.seedstack.audit.Initiator;
+import org.seedstack.audit.Trail;
 
 public class TrailTest {
 

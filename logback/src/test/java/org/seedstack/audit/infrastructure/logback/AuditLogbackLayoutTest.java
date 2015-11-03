@@ -18,10 +18,10 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.internal.util.reflection.Whitebox;
-import org.seedstack.audit.api.AuditEvent;
+import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.infrastructure.logback.AuditLogbackLayout;
-import org.seedstack.seed.el.api.ELContextBuilder;
-import org.seedstack.seed.el.api.ELService;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELService;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 

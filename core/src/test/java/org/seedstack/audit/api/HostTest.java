@@ -8,12 +8,12 @@
 /*
  * Creation : 23 juil. 2014
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-import org.seedstack.audit.api.Host;
+import org.seedstack.audit.Host;
 
 public class HostTest {
 

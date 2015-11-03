@@ -10,4 +10,4 @@
  *
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
  */
-package org.seedstack.audit.api;
+package org.seedstack.audit;

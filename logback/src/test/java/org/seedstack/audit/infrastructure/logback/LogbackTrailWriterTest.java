@@ -13,7 +13,7 @@ package org.seedstack.audit.infrastructure.logback;
 import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
-import org.seedstack.audit.api.AuditEvent;
+import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.infrastructure.logback.LogbackTrailWriter;
 
 public class LogbackTrailWriterTest {
