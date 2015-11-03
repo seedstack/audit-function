@@ -10,26 +10,25 @@
  */
 package org.seedstack.audit.internal;
 
+import org.aopalliance.intercept.MethodInvocation;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.internal.util.reflection.Whitebox;
+import org.seedstack.audit.AuditService;
+import org.seedstack.audit.Audited;
+import org.seedstack.audit.TrailExceptionHandler;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELContextBuilder.ELPropertyProvider;
+import org.seedstack.seed.el.ELService;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.RETURNS_MOCKS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import org.aopalliance.intercept.MethodInvocation;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.seedstack.audit.api.AuditService;
-import org.seedstack.audit.api.TrailExceptionHandler;
-import org.seedstack.audit.api.Audited;
-import org.seedstack.audit.internal.AuditedInterceptor;
-import org.seedstack.seed.el.api.ELContextBuilder;
-import org.seedstack.seed.el.api.ELContextBuilder.ELPropertyProvider;
-import org.seedstack.seed.el.api.ELService;
 
 public class AuditedInterceptorTest {
 

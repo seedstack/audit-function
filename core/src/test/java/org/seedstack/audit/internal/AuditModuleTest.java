@@ -10,24 +10,20 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.mockito.Mockito.RETURNS_MOCKS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import com.google.inject.Binder;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.internal.util.reflection.Whitebox;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.audit.TrailExceptionHandler;
+import org.seedstack.audit.spi.TrailWriter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.seedstack.audit.api.AuditEvent;
-import org.seedstack.audit.api.TrailExceptionHandler;
-import org.seedstack.audit.internal.AuditConfigurer;
-import org.seedstack.audit.internal.AuditModule;
-import org.seedstack.audit.internal.SecurityTrailExceptionHandler;
-import org.seedstack.audit.spi.TrailWriter;
-
-import com.google.inject.Binder;
+import static org.mockito.Mockito.RETURNS_MOCKS;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AuditModuleTest {
 

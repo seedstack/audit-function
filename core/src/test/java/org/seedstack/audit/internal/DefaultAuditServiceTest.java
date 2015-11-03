@@ -10,26 +10,25 @@
  */
 package org.seedstack.audit.internal;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.internal.util.reflection.Whitebox;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.audit.Host;
+import org.seedstack.audit.Trail;
+import org.seedstack.audit.spi.TrailWriter;
+import org.seedstack.seed.Application;
+import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.security.principals.Principals;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.seedstack.audit.api.AuditEvent;
-import org.seedstack.audit.api.Host;
-import org.seedstack.audit.api.Trail;
-import org.seedstack.audit.internal.DefaultAuditService;
-import org.seedstack.audit.spi.TrailWriter;
-import org.seedstack.seed.core.api.Application;
-import org.seedstack.seed.security.api.SecuritySupport;
-import org.seedstack.seed.security.api.principals.Principals;
 
 public class DefaultAuditServiceTest {
 

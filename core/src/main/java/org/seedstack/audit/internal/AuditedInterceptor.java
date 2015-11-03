@@ -7,24 +7,23 @@
  */
 package org.seedstack.audit.internal;
 
-import java.util.Set;
-
-import javax.el.ELContext;
-import javax.inject.Inject;
-
 import net.jodah.typetools.TypeResolver;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang.StringUtils;
-import org.seedstack.audit.api.AuditService;
-import org.seedstack.audit.api.Trail;
-import org.seedstack.audit.api.TrailExceptionHandler;
-import org.seedstack.audit.api.Audited;
-import org.seedstack.seed.el.api.ELContextBuilder;
-import org.seedstack.seed.el.api.ELContextBuilder.ELPropertyProvider;
-import org.seedstack.seed.el.api.ELService;
+import org.seedstack.audit.AuditService;
+import org.seedstack.audit.Audited;
+import org.seedstack.audit.Trail;
+import org.seedstack.audit.TrailExceptionHandler;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELContextBuilder.ELPropertyProvider;
+import org.seedstack.seed.el.ELService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.el.ELContext;
+import javax.inject.Inject;
+import java.util.Set;
 
 /**
  * This interceptor intercepts methods annotated with Audited annotation.

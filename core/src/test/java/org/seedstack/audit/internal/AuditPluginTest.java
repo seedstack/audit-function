@@ -10,20 +10,19 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.RETURNS_MOCKS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import io.nuun.kernel.api.Plugin;
 import io.nuun.kernel.api.plugin.InitState;
 import io.nuun.kernel.api.plugin.context.InitContext;
+import org.junit.Test;
+import org.seedstack.seed.core.internal.application.ApplicationPlugin;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.junit.Test;
-import org.seedstack.audit.internal.AuditPlugin;
-import org.seedstack.seed.core.internal.application.ApplicationPlugin;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.RETURNS_MOCKS;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AuditPluginTest {
 

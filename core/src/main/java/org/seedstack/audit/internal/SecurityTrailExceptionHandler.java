@@ -7,8 +7,8 @@
  */
 package org.seedstack.audit.internal;
 
-import org.seedstack.audit.api.TrailExceptionHandler;
-import org.seedstack.seed.security.api.exceptions.AuthorizationException;
+import org.seedstack.audit.TrailExceptionHandler;
+import org.seedstack.seed.security.AuthorizationException;
 
 /**
  * The implementation of trail exception handler for the security.
