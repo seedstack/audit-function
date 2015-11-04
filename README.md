@@ -1,5 +1,5 @@
 # SeedStack audit function 
-[![Build status](https://travis-ci.org/seedstack/audit-function.svg?branch=master)](https://travis-ci.org/seedstack/audit-function) [![Coverage Status](https://coveralls.io/repos/seedstack/audit-function/badge.svg?branch=master)](https://coveralls.io/r/seedstack/audit-function?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.audit/audit-function/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.audit/audit-function)
+[![Build status](https://travis-ci.org/seedstack/audit-addon.svg?branch=master)](https://travis-ci.org/seedstack/audit-addon) [![Coverage Status](https://coveralls.io/repos/seedstack/audit-addon/badge.svg?branch=master)](https://coveralls.io/r/seedstack/audit-addon?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.audit/audit-core/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.audit/audit-core)
 
 Provides auditing capabilities on code execution.  
 
