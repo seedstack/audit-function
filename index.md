@@ -14,18 +14,13 @@ The Audit add-on provides the ability to trace who does what in your application
 
 # Maven dependencies
 
-You can add the audit add-on by adding the following dependency in you app project.
-
-    <dependency>
-        <groupId>org.seedstack.addons</groupId>
-        <artifactId>audit-core</artifactId>
-    </dependency>
+{{< dependency "org.seedstack.addons.audit" "audit-core" >}}
 
 If you want to use the audit writer based on Logback, replace the dependency by the following 
 (see the section on LogbackTrailWriter):
 
     <dependency>
-        <groupId>org.seedstack.addons</groupId>
+        <groupId>org.seedstack.addons.audit</groupId>
         <artifactId>audit-logback</artifactId>
     </dependency>
 
