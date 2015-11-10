@@ -10,20 +10,16 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.RETURNS_MOCKS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import io.nuun.kernel.api.Plugin;
 import io.nuun.kernel.api.plugin.InitState;
 import io.nuun.kernel.api.plugin.context.InitContext;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
+import org.apache.commons.configuration.Configuration;
 import org.junit.Test;
-import org.seedstack.audit.internal.AuditPlugin;
-import org.seedstack.seed.core.internal.application.ApplicationPlugin;
+import org.mockito.Mockito;
+import org.seedstack.seed.core.spi.configuration.ConfigurationProvider;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AuditPluginTest {
 
@@ -36,11 +32,10 @@ public class AuditPluginTest {
         assertThat(underTest.nativeUnitModule()).isNotNull();
         assertThat(underTest.requiredPlugins()).isNotNull();
 
-        InitContext iniContext = mock(InitContext.class, RETURNS_MOCKS);
-        Collection plugins = new ArrayList();
-        Plugin app = mock(ApplicationPlugin.class, RETURNS_MOCKS);
-        plugins.add(app);
-        when(iniContext.pluginsRequired()).thenReturn(plugins);
+        InitContext iniContext = mock(InitContext.class, Mockito.RETURNS_MOCKS);
+        ConfigurationProvider configurationProvider = mock(ConfigurationProvider.class);
+        when(configurationProvider.getConfiguration()).thenReturn(mock(Configuration.class));
+        when(iniContext.dependency(ConfigurationProvider.class)).thenReturn(configurationProvider);
         InitState state = underTest.init(iniContext);
         assertThat(state).isEqualTo(InitState.INITIALIZED);
     }

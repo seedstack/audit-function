@@ -17,7 +17,7 @@ public class AuditLogbackPlugin extends AbstractPlugin {
 
     @Override
     public String name() {
-        return "business-audit-logback";
+        return "audit-logback";
     }
 
     @Override
