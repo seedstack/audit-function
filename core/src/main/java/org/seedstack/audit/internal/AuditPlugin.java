@@ -7,7 +7,7 @@
  */
 package org.seedstack.audit.internal;
 
-import io.nuun.kernel.api.Plugin;
+import com.google.common.collect.Lists;
 import io.nuun.kernel.api.plugin.InitState;
 import io.nuun.kernel.api.plugin.context.InitContext;
 import io.nuun.kernel.api.plugin.request.ClasspathScanRequest;
@@ -15,14 +15,12 @@ import io.nuun.kernel.core.AbstractPlugin;
 import org.apache.commons.configuration.Configuration;
 import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
-import org.seedstack.seed.core.internal.application.ApplicationPlugin;
+import org.seedstack.seed.core.spi.configuration.ConfigurationProvider;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
 /**
- * Plugin for audit
+ * Plugin for auditing an application's functional behavior.
  * 
  * @author yves.dautremay@mpsa.com
  */
@@ -34,7 +32,7 @@ public class AuditPlugin extends AbstractPlugin {
 
     @Override
     public String name() {
-        return "audit-function-plugin";
+        return "audit";
     }
 
     @Override
@@ -44,11 +42,8 @@ public class AuditPlugin extends AbstractPlugin {
 
     @Override
     public InitState init(InitContext initContext) {
-        Map<Class<?>, Collection<Class<?>>> auditClasses = initContext.scannedSubTypesByAncestorClass();
-        ApplicationPlugin applicationPlugin = (ApplicationPlugin) initContext.pluginsRequired().iterator().next();
-        Configuration auditConfig = applicationPlugin.getApplication().getConfiguration().subset(PROPERTIES_PREFIX);
-
-        auditConfigurer = new AuditConfigurer(auditConfig, auditClasses);
+        Configuration auditConfig = initContext.dependency(ConfigurationProvider.class).getConfiguration().subset(PROPERTIES_PREFIX);;
+        auditConfigurer = new AuditConfigurer(auditConfig, initContext.scannedSubTypesByAncestorClass());
         return InitState.INITIALIZED;
     }
 
@@ -58,10 +53,8 @@ public class AuditPlugin extends AbstractPlugin {
     }
 
     @Override
-    public Collection<Class<? extends Plugin>> requiredPlugins() {
-        Collection<Class<? extends Plugin>> requiredPlugins = new ArrayList<Class<? extends Plugin>>();
-        requiredPlugins.add(ApplicationPlugin.class);
-        return requiredPlugins;
+    public Collection<Class<?>> requiredPlugins() {
+        return Lists.<Class<?>>newArrayList(ConfigurationProvider.class);
     }
 
 }
