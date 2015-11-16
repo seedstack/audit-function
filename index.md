@@ -4,7 +4,8 @@ addon: "Audit"
 repo: "https://github.com/seedstack/audit-addon"
 author: "SeedStack"
 description: "The Audit add-on provides the ability to trace who does what in your application."
-min-version: "15.7+"
+min-version: "15.11+"
+backend: true
 menu:
     AuditAddon:
         weight: 10
