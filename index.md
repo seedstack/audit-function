@@ -153,7 +153,7 @@ You must also configure logback to add the appender and logger in the file *logb
       ...
       <appender name="AUDIT_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
           <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="org.seedstack.audit.infrastructure.logback.AuditLogbackLayout" />
+            <layout class="org.seedstack.audit.logback.AuditLogbackLayout" />
           </encoder>
         </appender>
     
