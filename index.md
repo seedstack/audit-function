@@ -2,9 +2,9 @@
 title: "Basics"
 name: "Audit"
 repo: "https://github.com/seedstack/audit-addon"
-author: "SeedStack"
+date: 2015-11-17
+author: Yves DAUTREMAY
 description: "The Audit add-on provides the ability to trace who does what in your application."
-min-version: "15.11+"
 backend: true
 weight: -1
 tags:
