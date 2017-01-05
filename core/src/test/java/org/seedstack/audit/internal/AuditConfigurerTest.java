@@ -10,9 +10,13 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import com.google.common.collect.Sets;
+import org.junit.Before;
+import org.junit.Test;
+import org.seedstack.audit.AuditConfig;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.audit.TrailExceptionHandler;
+import org.seedstack.audit.spi.TrailWriter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,34 +24,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.configuration.Configuration;
-import org.junit.Before;
-import org.junit.Test;
-import org.seedstack.audit.AuditEvent;
-import org.seedstack.audit.TrailExceptionHandler;
-import org.seedstack.audit.spi.TrailWriter;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AuditConfigurerTest {
-
     private AuditConfigurer underTest;
-
-    private Configuration configuration;
-
+    private AuditConfig auditConfig;
     private Map<Class<?>, Collection<Class<?>>> auditClasses;
 
     @Before
     public void before() {
-        configuration = mock(Configuration.class);
-        auditClasses = new HashMap<Class<?>, Collection<Class<?>>>();
-        underTest = new AuditConfigurer(configuration, auditClasses);
+        auditConfig = mock(AuditConfig.class);
+        auditClasses = new HashMap<>();
+        underTest = new AuditConfigurer(auditConfig, auditClasses);
     }
 
     @SuppressWarnings("unchecked")
     @Test
     public void findTrailWriters_nominal() {
-        when(configuration.getStringArray("writers")).thenReturn(
-                new String[] { DummyTrailWriter.class.getSimpleName(), DummyTrailWriter2.class.getName() });
-        Collection<Class<?>> trailWriterClasses = new ArrayList<Class<?>>();
+        when(auditConfig.getWriters()).thenReturn(Sets.newHashSet(DummyTrailWriter.class, DummyTrailWriter2.class));
+        Collection<Class<?>> trailWriterClasses = new ArrayList<>();
         trailWriterClasses.add(DummyTrailWriter.class);
         trailWriterClasses.add(DummyTrailWriter2.class);
         auditClasses.put(TrailWriter.class, trailWriterClasses);
@@ -61,22 +58,9 @@ public class AuditConfigurerTest {
     @SuppressWarnings("unchecked")
     @Test
     public void findTrailWriters_none_defined() {
-        when(configuration.getStringArray("writers")).thenReturn(new String[0]);
-        Collection<Class<?>> trailWriterClasses = new ArrayList<Class<?>>();
+        when(auditConfig.getWriters()).thenReturn(Sets.newHashSet());
+        Collection<Class<?>> trailWriterClasses = new ArrayList<>();
         trailWriterClasses.add(DummyTrailWriter.class);
-        auditClasses.put(TrailWriter.class, trailWriterClasses);
-
-        Set<Class<? extends TrailWriter>> result = underTest.findTrailWriters();
-
-        assertThat(result).isEmpty();
-    }
-
-    @Test
-    public void findTrailWriters_defined_trailers_dont_exist() {
-        when(configuration.getStringArray("writers")).thenReturn(new String[] { "titi", "toto" });
-        Collection<Class<?>> trailWriterClasses = new ArrayList<Class<?>>();
-        trailWriterClasses.add(DummyTrailWriter.class);
-        trailWriterClasses.add(DummyTrailWriter2.class);
         auditClasses.put(TrailWriter.class, trailWriterClasses);
 
         Set<Class<? extends TrailWriter>> result = underTest.findTrailWriters();
@@ -86,15 +70,14 @@ public class AuditConfigurerTest {
 
     @Test
     public void findTrailExceptionHandlers_nominal() {
-        when(configuration.getStringArray("exceptionHandlers")).thenReturn(
-                new String[] { DummyExceptionHandler.class.getSimpleName(), DummyExceptionHandler2.class.getName() });
-        Collection<Class<?>> trailExceptionHandlerClasses = new ArrayList<Class<?>>();
+        when(auditConfig.getExceptionHandlers()).thenReturn(Sets.newHashSet(DummyExceptionHandler.class, DummyExceptionHandler2.class));
+        Collection<Class<?>> trailExceptionHandlerClasses = new ArrayList<>();
         trailExceptionHandlerClasses.add(SecurityTrailExceptionHandler.class);
         trailExceptionHandlerClasses.add(DummyExceptionHandler.class);
         trailExceptionHandlerClasses.add(DummyExceptionHandler2.class);
         auditClasses.put(TrailExceptionHandler.class, trailExceptionHandlerClasses);
 
-        Set<Class<? extends TrailExceptionHandler>> result = underTest.findTrailExceptionHandlers();
+        Set<Class<? extends TrailExceptionHandler<?>>> result = underTest.findTrailExceptionHandlers();
 
         assertThat(result).isNotEmpty();
         assertThat(result).containsOnly(DummyExceptionHandler.class, DummyExceptionHandler2.class);
@@ -102,14 +85,14 @@ public class AuditConfigurerTest {
 
     @Test
     public void findTrailExceptionHandlers_no_handler_defined() {
-        when(configuration.getStringArray("exceptionHandlers")).thenReturn(new String[0]);
-        Collection<Class<?>> trailExceptionHandlerClasses = new ArrayList<Class<?>>();
+        when(auditConfig.getExceptionHandlers()).thenReturn(Sets.newHashSet());
+        Collection<Class<?>> trailExceptionHandlerClasses = new ArrayList<>();
         trailExceptionHandlerClasses.add(SecurityTrailExceptionHandler.class);
         trailExceptionHandlerClasses.add(DummyExceptionHandler.class);
         trailExceptionHandlerClasses.add(DummyExceptionHandler2.class);
         auditClasses.put(TrailExceptionHandler.class, trailExceptionHandlerClasses);
 
-        Set<Class<? extends TrailExceptionHandler>> result = underTest.findTrailExceptionHandlers();
+        Set<Class<? extends TrailExceptionHandler<?>>> result = underTest.findTrailExceptionHandlers();
 
         assertThat(result).isNotEmpty();
         assertThat(result).containsOnly(DummyExceptionHandler.class, DummyExceptionHandler2.class, SecurityTrailExceptionHandler.class);

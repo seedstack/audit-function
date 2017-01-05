@@ -10,13 +10,7 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.mockito.Mockito.RETURNS_MOCKS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import com.google.inject.Binder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.internal.util.reflection.Whitebox;
@@ -24,7 +18,12 @@ import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
 
-import com.google.inject.Binder;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.mockito.Mockito.RETURNS_MOCKS;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AuditModuleTest {
 
@@ -32,12 +31,12 @@ public class AuditModuleTest {
 
     private Set<Class<? extends TrailWriter>> trailWriters;
 
-    private Set<Class<? extends TrailExceptionHandler>> trailExceptionHandlers;
+    private Set<Class<? extends TrailExceptionHandler<?>>> trailExceptionHandlers;
 
     @Before
     public void before() {
-        trailWriters = new HashSet<Class<? extends TrailWriter>>();
-        trailExceptionHandlers = new HashSet<Class<? extends TrailExceptionHandler>>();
+        trailWriters = new HashSet<>();
+        trailExceptionHandlers = new HashSet<>();
 
         AuditConfigurer configurer = mock(AuditConfigurer.class, RETURNS_MOCKS);
         when(configurer.findTrailWriters()).thenReturn(trailWriters);

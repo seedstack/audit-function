@@ -22,21 +22,10 @@ import org.seedstack.audit.spi.TrailWriter;
 
 import java.util.Set;
 
-/**
- * Module for the audit
- * 
- * @author yves.dautremay@mpsa.com
- */
-public class AuditModule extends AbstractModule {
+class AuditModule extends AbstractModule {
+    private final AuditConfigurer auditConfigurer;
 
-    private AuditConfigurer auditConfigurer;
-
-    /**
-     * Constructor
-     * 
-     * @param auditConfigurer the audit configurator
-     */
-    public AuditModule(AuditConfigurer auditConfigurer) {
+    AuditModule(AuditConfigurer auditConfigurer) {
         this.auditConfigurer = auditConfigurer;
     }
 
@@ -59,12 +48,7 @@ public class AuditModule extends AbstractModule {
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(Audited.class), interceptor);
 
         // Following lines allow to call an init method on the service
-        final InjectionListener injectionListener = new InjectionListener<DefaultAuditService>() {
-            @Override
-            public void afterInjection(DefaultAuditService injectee) {
-                injectee.initHost();
-            }
-        };
+        final InjectionListener injectionListener = (InjectionListener<DefaultAuditService>) DefaultAuditService::initHost;
         TypeListener typeListener = new TypeListener() {
             @Override
             public <I> void hear(TypeLiteral<I> type, TypeEncounter<I> encounter) {

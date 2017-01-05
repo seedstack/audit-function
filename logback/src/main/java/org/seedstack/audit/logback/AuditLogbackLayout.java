@@ -7,32 +7,26 @@
  */
 package org.seedstack.audit.logback;
 
-import javax.el.ELContext;
-import javax.inject.Inject;
-
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.CoreConstants;
+import ch.qos.logback.core.LayoutBase;
 import org.seedstack.audit.AuditEvent;
 import org.seedstack.seed.Configuration;
 import org.seedstack.seed.el.ELContextBuilder;
 import org.seedstack.seed.el.ELService;
 
-import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.CoreConstants;
-import ch.qos.logback.core.LayoutBase;
+import javax.el.ELContext;
+import javax.inject.Inject;
 
 /**
  * LogbackLayout for trace of audit trails.
- * 
- * @author yves.dautremay@mpsa.com
  */
 public class AuditLogbackLayout extends LayoutBase<ILoggingEvent> {
-
     @Inject
     private ELService elService;
-
     @Inject
     private ELContextBuilder elContextBuilder;
-
-    @Configuration("org.seedstack.business.audit.logPattern")
+    @Configuration("audit.logPattern")
     private String elExpression;
 
     @Override

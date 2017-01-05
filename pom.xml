@@ -13,19 +13,19 @@
     <parent>
         <groupId>org.seedstack.poms</groupId>
         <artifactId>parent-internal</artifactId>
-        <version>2.4.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <groupId>org.seedstack.addons.audit</groupId>
     <artifactId>audit</artifactId>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <seed.version>2.3.0</seed.version>
+        <seed.version>3.0.1-SNAPSHOT</seed.version>
         <juel.version>2.2.7</juel.version>
 
-        <compatibility.version>2.1.0</compatibility.version>
+        <compatibility.skip>true</compatibility.skip>
 
         <bintray.package>audit-addon</bintray.package>
     </properties>
@@ -60,6 +60,8 @@
                             <licenseMerge>Apache 2|Apache License, Version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|The Apache Software License, Version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|Apache License 2.0</licenseMerge>
+                            <licenseMerge>Apache 2|Apache License, version 2.0</licenseMerge>
+                            <licenseMerge>Apache 2|Apache License Version 2.0</licenseMerge>
                             <licenseMerge>BSD|The New BSD License</licenseMerge>
                             <licenseMerge>CDDL|CDDL + GPLv2 with classpath exception</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>

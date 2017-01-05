@@ -7,32 +7,28 @@
  */
 package org.seedstack.audit.internal;
 
-import java.util.Set;
-
-import javax.el.ELContext;
-import javax.inject.Inject;
-
 import net.jodah.typetools.TypeResolver;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang.StringUtils;
 import org.seedstack.audit.AuditService;
+import org.seedstack.audit.Audited;
 import org.seedstack.audit.Trail;
 import org.seedstack.audit.TrailExceptionHandler;
-import org.seedstack.audit.Audited;
 import org.seedstack.seed.el.ELContextBuilder;
 import org.seedstack.seed.el.ELContextBuilder.ELPropertyProvider;
 import org.seedstack.seed.el.ELService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.el.ELContext;
+import javax.inject.Inject;
+import java.util.Set;
+
 /**
  * This interceptor intercepts methods annotated with Audited annotation.
- * 
- * @author yves.dautremay@mpsa.com
  */
-public class AuditedInterceptor implements MethodInterceptor {
-
+class AuditedInterceptor implements MethodInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(AuditedInterceptor.class);
 
     private static final ThreadLocal<AuditContext> THREAD_LOCAL = new ThreadLocal<AuditContext>() {
@@ -54,7 +50,7 @@ public class AuditedInterceptor implements MethodInterceptor {
     @Inject
     private ELContextBuilder elContextBuilder;
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Audited annotation = invocation.getMethod().getAnnotation(Audited.class);

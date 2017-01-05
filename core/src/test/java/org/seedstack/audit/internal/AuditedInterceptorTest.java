@@ -46,7 +46,7 @@ public class AuditedInterceptorTest {
     public void before() {
         underTest = new AuditedInterceptor();
         auditService = mock(AuditService.class);
-        exceptionHandlers = new HashSet<TrailExceptionHandler>();
+        exceptionHandlers = new HashSet<>();
         elService = mock(ELService.class, RETURNS_MOCKS);
         elContextBuilder = mock(ELContextBuilder.class, RETURNS_MOCKS);
 

@@ -7,7 +7,11 @@
  */
 package org.seedstack.audit.internal;
 
-import org.seedstack.audit.*;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.audit.AuditService;
+import org.seedstack.audit.Host;
+import org.seedstack.audit.Initiator;
+import org.seedstack.audit.Trail;
 import org.seedstack.audit.spi.TrailWriter;
 import org.seedstack.seed.Application;
 import org.seedstack.seed.security.SecuritySupport;
@@ -20,25 +24,14 @@ import javax.inject.Inject;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Default implementation of AuditService.
- * 
- * @author yves.dautremay@mpsa.com
- */
-public class DefaultAuditService implements AuditService {
-
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultAuditService.class);
-
+class DefaultAuditService implements AuditService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultAuditService.class);
     private static Host host;
-
     private static AtomicLong trailIds = new AtomicLong(0);
-
     @Inject
     private Application application;
-
     @Inject
     private SecuritySupport securitySupport;
-
     @Inject
     private Set<TrailWriter> trailWriters;
 
@@ -67,7 +60,7 @@ public class DefaultAuditService implements AuditService {
             }
             initiator = new Initiator(securitySupport.getSimplePrincipalByName(Principals.IDENTITY).getValue(), fullName, securitySupport.getHost());
         } else {
-            LOG.warn("An audited code is being run by an unauthenticated user");
+            LOGGER.warn("An audited code is being run by an unauthenticated user");
             initiator = new Initiator("unknown user id", "unknow user name", securitySupport.getHost());
         }
         return initiator;

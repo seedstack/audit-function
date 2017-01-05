@@ -7,17 +7,15 @@
  */
 package org.seedstack.audit.logback.internal;
 
-import org.seedstack.audit.logback.AuditLogbackLayout;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.Appender;
 import ch.qos.logback.core.OutputStreamAppender;
 import ch.qos.logback.core.encoder.Encoder;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
-
 import com.google.inject.AbstractModule;
+import org.seedstack.audit.logback.AuditLogbackLayout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Audit logback module.

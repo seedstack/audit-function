@@ -16,15 +16,15 @@
     </appender>
     <appender name="AUDIT_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="org.seedstack.audit.logback.AuditLogbackLayout" />
+            <layout class="org.seedstack.audit.logback.AuditLogbackLayout"/>
         </encoder>
     </appender>
 
     <logger name="AUDIT_LOGGER" additivity="false">
-        <appender-ref ref="AUDIT_APPENDER" />
+        <appender-ref ref="AUDIT_APPENDER"/>
     </logger>
 
-    <root level="WARN">
-        <appender-ref ref="STDOUT" />
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

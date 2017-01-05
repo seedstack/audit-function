@@ -45,7 +45,7 @@ public class DefaultAuditServiceTest {
         underTest = new DefaultAuditService();
         application = mock(Application.class);
         securitySupport = mock(SecuritySupport.class);
-        trailWriters = new HashSet<TrailWriter>();
+        trailWriters = new HashSet<>();
 
         Whitebox.setInternalState(underTest, "application", application);
         Whitebox.setInternalState(underTest, "securitySupport", securitySupport);

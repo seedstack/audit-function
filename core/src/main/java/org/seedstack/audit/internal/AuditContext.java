@@ -14,27 +14,25 @@ import org.seedstack.audit.Trail;
 
 /**
  * Local thread context for audit interceptor
- * 
- * @author yves.dautremay@mpsa.com
  */
 class AuditContext {
 
     private Trail trail;
 
-    private Set<Exception> auditedExceptions = new HashSet<Exception>();
+    private Set<Exception> auditedExceptions = new HashSet<>();
 
     /** Nested audited sections */
-    public int nbNestedAudits;
+    int nbNestedAudits;
 
-    public Trail getTrail() {
+    Trail getTrail() {
         return trail;
     }
 
-    public void setTrail(Trail trail) {
+    void setTrail(Trail trail) {
         this.trail = trail;
     }
 
-    public Set<Exception> getAuditedExceptions() {
+    Set<Exception> getAuditedExceptions() {
         return auditedExceptions;
     }
 }
