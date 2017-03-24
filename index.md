@@ -33,7 +33,7 @@ record a message and get access to information like the date,  the connected use
 
 Following is the model of what is given to the object in charge of writing the audit:
 
-![audit model]({{< baseURL >}}puml/business/business-api-domain-audit.png)
+![audit model]({{< baseUrl >}}puml/business/business-api-domain-audit.png)
 
  - AuditEvent: Main object passed to the trail writer. It contains the date of the audit and the accompanying message. 
  It also has the trail
