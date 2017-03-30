@@ -3,10 +3,6 @@ title: "Audit"
 repo: "https://github.com/seedstack/audit-addon"
 author: Yves DAUTREMAY
 description: "The Audit add-on provides the ability to trace who does what in your application."
-tags:
-    - "audit"
-    - "trace"
-    - "trail"
 zones:
     - Addons
 menu:
