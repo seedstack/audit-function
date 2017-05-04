@@ -10,7 +10,7 @@ menu:
         weight: 10
 ---
 
-The Audit add-on provides the ability to trace who does what in your application.
+The Audit add-on provides the ability to trace who does what in your application.<!--more-->
 
 # Dependencies
 
