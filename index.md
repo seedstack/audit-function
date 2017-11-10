@@ -27,9 +27,7 @@ To use the Logback audit writer, add the following dependency:
 The Audit allows you to trace somewhere (log file for example) each time a user executes a portion of code. You can 
 record a message and get access to information like the date,  the connected user or the application concerned. 
 
-Following is the model of what is given to the object in charge of writing the audit:
-
-![audit model]({{< baseUrl >}}puml/business/business-api-domain-audit.png)
+Main audit concepts are:
 
  - AuditEvent: Main object passed to the trail writer. It contains the date of the audit and the accompanying message. 
  It also has the trail
