@@ -1,18 +1,17 @@
 ---
 title: "Audit"
+addon: "Audit"
 repo: "https://github.com/seedstack/audit-addon"
 author: Yves DAUTREMAY
 description: "The Audit add-on provides the ability to trace who does what in your application."
 zones:
     - Addons
-menu:
-    AuditAddon:
-        weight: 10
+noMenu: true    
 ---
 
 The Audit add-on provides the ability to trace who does what in your application.<!--more-->
 
-# Dependencies
+## Dependencies
 
 The core functionality of the audit add-on is in the following dependency: 
 
@@ -22,7 +21,7 @@ To use the Logback audit writer, add the following dependency:
 
 {{< dependency g="org.seedstack.addons.audit" a="audit-logback" >}}
 
-# Concepts
+## Concepts
 
 The Audit allows you to trace somewhere (log file for example) each time a user executes a portion of code. You can 
 record a message and get access to information like the date,  the connected user or the application concerned. 
@@ -38,7 +37,7 @@ Main audit concepts are:
  well as its address.
  - Address: Contains Network information if available: ip address and dns name.
 
-# Configuration
+## Configuration
 
 {{% config p="audit" %}}
 ```yaml
@@ -51,9 +50,9 @@ audit:
 ```
 {{% /config %}}   
 
-# Usage
+## Usage
 
-## The @Audited Annotation
+### The @Audited Annotation
 
 You can mark a method with the annotation *@Audited* so the framework will automatically audit this the execution of 
 the method:
@@ -82,7 +81,7 @@ Can be an EL expression but only arguments are available.
 If a handler handles the exception, this message is ignored. Can be an EL expression, the exception is available via 
 property "exception". For instance: `messageOnException = "kaboom : \${exception.getMessage()}"`
 
-## AuditService
+### AuditService
 You can programmatically write a trail by injecting the AuditService. First create a new Trail that you can reuse later. 
 It will be initialized automatically with the current Host and Initiator. Then trail as many messages as required with 
 the given Trail.
@@ -100,7 +99,7 @@ public class SomeClass {
 }
 ```
     
-## TrailWriter
+### TrailWriter
 A trail writer effectively writes each message and its trail (an AuditEvent). The framework brings a writer based on 
 Logback that can write on a file, in the console... named LogbackTrailWriter
 
@@ -115,7 +114,7 @@ public class SysoutTrailWriter implements TrailWriter{
 }
 ```
     
-## TrailExceptionHandler
+### TrailExceptionHandler
 A TrailExceptionHandler is used in conjunction with the @Audited annotation. When the annotated method throws an exception, 
 if a handler is able to handle the exception, it will create a String describing it, being the message that will be trailed. 
 The framework brings an exception handler for AuthorizationException.
@@ -131,7 +130,7 @@ public class BusinessTrailExceptionHandler implements
 }
 ```
 
-# Logback trail writer
+## Logback trail writer
 
 If you choose to use the LogbackTrailWriter, you must specify the `audit.logPattern` configuration property with the 
 pattern that will be used to write each message. It can be an EL expression, with the following properties available:
