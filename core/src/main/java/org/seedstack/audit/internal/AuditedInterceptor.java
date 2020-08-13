@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,10 +7,10 @@
  */
 package org.seedstack.audit.internal;
 
+import com.google.common.base.Strings;
 import net.jodah.typetools.TypeResolver;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.apache.commons.lang.StringUtils;
 import org.seedstack.audit.AuditService;
 import org.seedstack.audit.Audited;
 import org.seedstack.audit.Trail;
@@ -70,7 +70,7 @@ class AuditedInterceptor implements MethodInterceptor {
 
         String messageBefore = annotation.messageBefore();
 
-        if (!StringUtils.isEmpty(messageBefore)) {
+        if (!Strings.isNullOrEmpty(messageBefore)) {
             try {
                 String evaluatedMessage = (String) elService.withExpression(messageBefore, String.class).withContext(argsPropertyProvider.build())
                         .asValueExpression().eval();
@@ -108,7 +108,7 @@ class AuditedInterceptor implements MethodInterceptor {
                     }
                     if (!handled) {
                         String message;
-                        if (!StringUtils.isEmpty(annotation.messageOnException())) {
+                        if (!Strings.isNullOrEmpty(annotation.messageOnException())) {
                             message = annotation.messageOnException();
                         } else {
                             message = "Audited action threw an exception : " + e.getClass() + " : " + e.getMessage();

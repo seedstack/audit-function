@@ -1,3 +1,7 @@
+# Version 3.0.1 (2020-08-13)
+
+* [chg] Update for Seed 3.10+
+
 # Version 3.0.0 (2017-01-13)
 
 * [brk] Update to new configuration system.

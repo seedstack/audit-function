@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -16,8 +16,6 @@ import java.lang.annotation.Target;
  * An annotation used to automatically audit a method. A message before the execution of the method can be defined. A message at the end of the
  * execution must be defined. If an exception occurs in the method, a message can also be defined. Each message can be an EL (Expression language)
  * which will be evaluated with the context of the method (arguments, return, exception...)
- *
- * @author yves.dautremay@mpsa.com
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})

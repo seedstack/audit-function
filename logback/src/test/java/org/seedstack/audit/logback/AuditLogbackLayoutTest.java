@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -10,20 +10,17 @@
  */
 package org.seedstack.audit.logback;
 
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import org.junit.Before;
+import org.junit.Test;
+import org.seedstack.audit.AuditEvent;
+import org.seedstack.seed.el.ELContextBuilder;
+import org.seedstack.seed.el.ELService;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.RETURNS_MOCKS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.seedstack.audit.AuditEvent;
-import org.seedstack.audit.logback.AuditLogbackLayout;
-import org.seedstack.seed.el.ELContextBuilder;
-import org.seedstack.seed.el.ELService;
-
-import ch.qos.logback.classic.spi.ILoggingEvent;
 
 public class AuditLogbackLayoutTest {
 
@@ -40,9 +37,9 @@ public class AuditLogbackLayoutTest {
         underTest = new AuditLogbackLayout();
         elService = mock(ELService.class, RETURNS_MOCKS);
         elContextBuilder = mock(ELContextBuilder.class, RETURNS_MOCKS);
-        Whitebox.setInternalState(underTest, "elService", elService);
-        Whitebox.setInternalState(underTest, "elContextBuilder", elContextBuilder);
-        Whitebox.setInternalState(underTest, "elExpression", elExpression);
+        TestUtils.setField(underTest, "elService", elService);
+        TestUtils.setField(underTest, "elContextBuilder", elContextBuilder);
+        TestUtils.setField(underTest, "elExpression", elExpression);
     }
 
     @Test
@@ -50,7 +47,7 @@ public class AuditLogbackLayoutTest {
         elExpression = "test";
         ILoggingEvent event = mock(ILoggingEvent.class);
         AuditEvent auditEvent = mock(AuditEvent.class, RETURNS_MOCKS);
-        when(event.getArgumentArray()).thenReturn(new Object[] { auditEvent });
+        when(event.getArgumentArray()).thenReturn(new Object[]{auditEvent});
         String result = underTest.doLayout(event);
         assertThat(result).isNotEmpty();
     }

@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -23,7 +23,8 @@ public class HostTest {
 
         Assertions.assertThat(host.getId()).isEqualTo(id);
         Assertions.assertThat(host.getName()).isEqualTo(name);
-        Assertions.assertThat(host.getAddress()).isNull();
+        Assertions.assertThat(host.getAddress().getDnsName()).isEqualTo("unknown");
+        Assertions.assertThat(host.getAddress().getIpAddress()).isEqualTo("unknown");
     }
 
     @Test

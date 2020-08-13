@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,12 +30,15 @@ public class AuditPlugin extends AbstractSeedPlugin {
 
     @Override
     public Collection<ClasspathScanRequest> classpathScanRequests() {
-        return classpathScanRequestBuilder().descendentTypeOf(TrailWriter.class).descendentTypeOf(TrailExceptionHandler.class).build();
+        return classpathScanRequestBuilder()
+                .subtypeOf(TrailWriter.class)
+                .subtypeOf(TrailExceptionHandler.class
+                ).build();
     }
 
     @Override
     public InitState initialize(InitContext initContext) {
-        auditConfigurer = new AuditConfigurer(getConfiguration(AuditConfig.class), initContext.scannedSubTypesByAncestorClass());
+        auditConfigurer = new AuditConfigurer(getConfiguration(AuditConfig.class), initContext.scannedSubTypesByParentClass());
         return InitState.INITIALIZED;
     }
 

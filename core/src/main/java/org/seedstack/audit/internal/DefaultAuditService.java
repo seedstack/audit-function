@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,23 +21,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 class DefaultAuditService implements AuditService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultAuditService.class);
-    private static Host host;
-    private static AtomicLong trailIds = new AtomicLong(0);
+    private final static AtomicLong trailIds = new AtomicLong(0);
+    private volatile static Host trailHost;
+    private final SecuritySupport securitySupport;
+    private final Set<TrailWriter> trailWriters;
+
     @Inject
-    private Application application;
-    @Inject
-    private SecuritySupport securitySupport;
-    @Inject
-    private Set<TrailWriter> trailWriters;
+    public DefaultAuditService(Application application, SecuritySupport securitySupport, Set<TrailWriter> trailWriters) {
+        this.securitySupport = securitySupport;
+        this.trailWriters = new HashSet<>(trailWriters);
+        if (trailHost == null) {
+            synchronized (DefaultAuditService.class) {
+                if (trailHost == null) {
+                    trailHost = new Host(application.getId(), application.getName());
+                }
+            }
+        }
+    }
 
     @Override
     public Trail createTrail() {
-        return new Trail(trailIds.getAndIncrement(), createInitiator(), getHost());
+        return new Trail(trailIds.getAndIncrement(), createInitiator(), trailHost);
     }
 
     @Override
@@ -61,19 +71,8 @@ class DefaultAuditService implements AuditService {
             initiator = new Initiator(securitySupport.getSimplePrincipalByName(Principals.IDENTITY).getValue(), fullName, securitySupport.getHost());
         } else {
             LOGGER.warn("An audited code is being run by an unauthenticated user");
-            initiator = new Initiator("unknown user id", "unknow user name", securitySupport.getHost());
+            initiator = new Initiator("<unknown user id>", "<unknown user name>", securitySupport.getHost());
         }
         return initiator;
-    }
-
-    void initHost() {
-        host = new Host(application.getId(), application.getName());
-    }
-
-    Host getHost() {
-        if (host == null) {
-            initHost();
-        }
-        return host;
     }
 }

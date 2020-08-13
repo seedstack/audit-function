@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -10,65 +10,39 @@
  */
 package org.seedstack.audit.internal;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import com.google.common.collect.Sets;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
 import org.seedstack.audit.AuditEvent;
-import org.seedstack.audit.Host;
 import org.seedstack.audit.Trail;
 import org.seedstack.audit.spi.TrailWriter;
 import org.seedstack.seed.Application;
 import org.seedstack.seed.security.SecuritySupport;
 import org.seedstack.seed.security.principals.Principals;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 public class DefaultAuditServiceTest {
-
     private DefaultAuditService underTest;
-
     private Application application;
-
     private SecuritySupport securitySupport;
-
-    private Set<TrailWriter> trailWriters;
+    private TrailWriter trailWriter;
 
     @Before
     public void before() {
-        underTest = new DefaultAuditService();
         application = mock(Application.class);
         securitySupport = mock(SecuritySupport.class);
-        trailWriters = new HashSet<>();
+        trailWriter = mock(TrailWriter.class);
+        underTest = new DefaultAuditService(application, securitySupport, Sets.newHashSet(trailWriter));
 
-        Whitebox.setInternalState(underTest, "application", application);
-        Whitebox.setInternalState(underTest, "securitySupport", securitySupport);
-        Whitebox.setInternalState(underTest, "trailWriters", trailWriters);
-    }
-
-    @Test
-    public void test_initHost() {
-        final String id = "id";
-        final String name = "name";
-        when(application.getId()).thenReturn(id);
-        when(application.getName()).thenReturn(name);
-
-        underTest.initHost();
-
-        Host host = underTest.getHost();
-        assertThat(host.getId()).isEqualTo(id);
-        assertThat(host.getName()).isEqualTo(name);
     }
 
     @Test
     public void createTrail_nominal() {
-        Whitebox.setInternalState(underTest, "host", null);
         final String id = "id";
         final String identity = "identity";
         final String fullName = "fullName";
@@ -88,7 +62,6 @@ public class DefaultAuditServiceTest {
 
     @Test
     public void createTrail_noFullName() {
-        Whitebox.setInternalState(underTest, "host", null);
         final String id = "id";
         final String identity = "identity";
         when(application.getId()).thenReturn(id);
@@ -107,7 +80,6 @@ public class DefaultAuditServiceTest {
 
     @Test
     public void createTrail_notAuthenticated() {
-        Whitebox.setInternalState(underTest, "host", null);
         final String id = "id";
         when(application.getId()).thenReturn(id);
         when(application.getName()).thenReturn("name");
@@ -115,19 +87,15 @@ public class DefaultAuditServiceTest {
 
         Trail t = underTest.createTrail();
 
-        assertThat(t.getInitiator().getName()).isEqualTo("unknow user name");
-        assertThat(t.getInitiator().getId()).isEqualTo("unknown user id");
+        assertThat(t.getInitiator().getName()).isEqualTo("<unknown user name>");
+        assertThat(t.getInitiator().getId()).isEqualTo("<unknown user id>");
         assertThat(t.getId()).isGreaterThanOrEqualTo(0);
     }
 
     @Test
     public void trail_nominal() {
-        TrailWriter tw = mock(TrailWriter.class);
-        trailWriters.add(tw);
         Trail trail = mock(Trail.class);
-
         underTest.trail("dummy", trail);
-
-        verify(tw).writeEvent(any(AuditEvent.class));
+        verify(trailWriter).writeEvent(any(AuditEvent.class));
     }
 }

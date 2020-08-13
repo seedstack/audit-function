@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,7 +13,6 @@ package org.seedstack.audit.internal;
 import com.google.inject.Binder;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
 import org.seedstack.audit.AuditEvent;
 import org.seedstack.audit.TrailExceptionHandler;
 import org.seedstack.audit.spi.TrailWriter;
@@ -45,7 +44,7 @@ public class AuditModuleTest {
         underTest = new AuditModule(configurer);
 
         Binder b = mock(Binder.class, RETURNS_MOCKS);
-        Whitebox.setInternalState(underTest, "binder", b);
+        TestUtils.setField(underTest, "binder", b);
     }
 
     @Test

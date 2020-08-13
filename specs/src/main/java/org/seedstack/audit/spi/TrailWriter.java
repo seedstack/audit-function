@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -11,14 +11,12 @@ import org.seedstack.audit.AuditEvent;
 
 /**
  * Interface used to write an event in its final form (log, bdd...)
- * 
- * @author yves.dautremay@mpsa.com
  */
 public interface TrailWriter {
 
     /**
      * Writes the event
-     * 
+     *
      * @param auditEvent the event to write
      */
     void writeEvent(AuditEvent auditEvent);

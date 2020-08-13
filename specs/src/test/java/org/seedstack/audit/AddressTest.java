@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -11,22 +11,24 @@
 package org.seedstack.audit;
 
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class AddressTest {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    @Test(expected = UnknownHostException.class)
-    public void testAddress_unknownHost() throws UnknownHostException {
-        new Address("dummy");
+public class AddressTest {
+    @Test
+    public void testAddress_unknownHost() {
+        assertThat(Address.forHostName("dummy").getDnsName()).isEqualTo("unknown");
+        assertThat(Address.forHostName("dummy").getIpAddress()).isEqualTo("unknown");
     }
 
     @Test
     public void testAddress_localhost() throws UnknownHostException {
-        Address address = new Address("localhost");
-        Assertions.assertThat(address.getIpAddress()).isEqualTo("127.0.0.1");
-        Assertions.assertThat(address.getDnsName()).isEqualTo("localhost");
+        Address address = Address.forLocalHost();
+        assertThat(address.getDnsName()).isEqualTo(InetAddress.getLocalHost().getHostName());
+        assertThat(address.getIpAddress()).isEqualTo(InetAddress.getLocalHost().getHostAddress());
     }
 }
